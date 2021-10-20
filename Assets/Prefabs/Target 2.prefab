@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4022717798268846098}
   m_Layer: 7
   m_Name: Target 2
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,3 +111,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 8162780214551408335}
   healthPoints: 100
+  targetSize: 0
+  Tsize: 2

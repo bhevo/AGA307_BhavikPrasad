@@ -19,20 +19,20 @@ public class FiringPoint : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1")) 
         {
-            /*  Projectile newProjectile;
+              Projectile newProjectile;
               newProjectile = Instantiate(projectilePrefab, firingPoint.position, firingPoint.rotation);
-              Destroy(newProjectile.gameObject, 5f); */
+              Destroy(newProjectile.gameObject, 5f);
 
-            RaycastHit hitInfo;
-            if (Physics.Raycast(firingPoint.position, firingPoint.forward, out hitInfo, 1000f, targetLayer))
-            {
-                Target target = hitInfo.collider.GetComponent<Target>();
-                if (target != null)
-                {
-                    target.OnHit();
-                }
-                Debug.Log("Hit" + hitInfo.collider.gameObject.name);
-            }
+            /* RaycastHit hitInfo;
+             if (Physics.Raycast(firingPoint.position, firingPoint.forward, out hitInfo, 1000f, targetLayer))
+             {
+                 Target target = hitInfo.collider.GetComponent<Target>();
+                 if (target != null)
+                 {
+                     target.OnHit();
+                 }
+                 Debug.Log("Hit" + hitInfo.collider.gameObject.name); 
+             } */
         }
     }
 }

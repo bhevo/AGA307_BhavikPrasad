@@ -8,13 +8,16 @@ public class EnemyManager : MonoBehaviour
     public Transform[] spawnPoints;
     public GameObject[] enemyTypes;
     public List<GameObject> enemies;
+    int spawnDelay = 3;
+
     void Start()
     {
         for (int i = 0; i < 100; i++)
         {
             Debug.Log((i + 1));
         }
-        SpawnEnemy();
+        //  SpawnEnemy();
+        StartCoroutine(SpawnEnemyDelayed());
     }
 
     // Update is called once per frame
@@ -36,4 +39,15 @@ public class EnemyManager : MonoBehaviour
         }
         Debug.Log("Total: " + enemies.Count + " Enemies");
     }
+    IEnumerator SpawnEnemyDelayed()
+    {
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            int rndEnemy = Random.Range(0, enemyTypes.Length);
+            GameObject enemy = Instantiate(enemyTypes[rndEnemy], spawnPoints[i].position, spawnPoints[i].rotation);
+            enemies.Add(enemy);
+            yield return new WaitForSeconds(spawnDelay);
+        }
+    }
+    
 }
