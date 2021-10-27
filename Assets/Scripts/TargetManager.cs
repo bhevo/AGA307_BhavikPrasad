@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class TargetManager : MonoBehaviour
+public class TargetManager : Singleton<TargetManager>
 {
     public Transform[] spawnPoints;
     public GameObject[] targetTypes;
@@ -33,5 +33,11 @@ public class TargetManager : MonoBehaviour
             Debug.Log(targets.Count);
         }
         Debug.Log("Total: " + targets.Count + " Targets");
+    }
+
+    public void Remove(Target toRemove)
+    {
+        targets.Remove(toRemove.gameObject);
+        Debug.Log(targets.Count);
     }
 }

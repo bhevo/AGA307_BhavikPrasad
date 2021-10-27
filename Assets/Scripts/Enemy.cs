@@ -31,10 +31,14 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       /* if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.H))
         {
-            StartCoroutine(Move());
-        }*/
+            Hit();
+        }
+        if (health <= 0)
+        {
+            Die();
+        }
 
 
     }
@@ -71,5 +75,18 @@ public class Enemy : MonoBehaviour
                 Debug.Log("invalid type selected");
                 break;
         }
+    }
+
+    public void Hit()
+    {
+        health -= 25f;
+        GameManager.instance.AddScore(10);
+    }
+
+    public void Die()
+    {
+        GameManager.instance.AddScore(100);
+        EnemyManager.instance.Remove(this);
+        Destroy(gameObject);
     }
 }

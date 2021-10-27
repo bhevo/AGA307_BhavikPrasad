@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager : Singleton<EnemyManager>
 {
     // Start is called before the first frame update
     public Transform[] spawnPoints;
@@ -38,6 +38,11 @@ public class EnemyManager : MonoBehaviour
 
         }
         Debug.Log("Total: " + enemies.Count + " Enemies");
+    }
+    public void Remove(Enemy toRemove)
+    {
+        enemies.Remove(toRemove.gameObject);
+        Debug.Log(enemies.Count);
     }
     IEnumerator SpawnEnemyDelayed()
     {

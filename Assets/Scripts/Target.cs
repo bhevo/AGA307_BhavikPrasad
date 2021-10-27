@@ -36,6 +36,9 @@ public class Target : MonoBehaviour
         {
             transform.localScale = Random.insideUnitSphere;
         }
+
+        
+
     }
     public void OnHit()
     {
@@ -44,9 +47,15 @@ public class Target : MonoBehaviour
         Debug.Log(healthPoints);
         if (healthPoints == 0)
         {
-            Destroy(gameObject);
+            Destroy();
         }
         
+    }
+
+    public void Destroy()
+    {
+        TargetManager.instance.Remove(this);
+        Destroy(gameObject);
     }
 
     public void Setup()
@@ -54,22 +63,28 @@ public class Target : MonoBehaviour
         switch (Tsize)
         {
             case TargetSizes.Small:
-                scaleFactor = 0.5f;
-                transform.localScale = Vector3.one * scaleFactor;
-                speed = 20f;
-                meshRenderer.material.color = Color.red;
+                if (GameManager.instance.difficulty == Difficulty.Hard)
+                {
+                    scaleFactor = 0.5f;
+                    transform.localScale = Vector3.one * scaleFactor;
+                    speed = 20f;
+                    meshRenderer.material.color = Color.red;
+                }
+
                 break;
             case TargetSizes.Medium:
                 scaleFactor = 1;
                 transform.localScale = Vector3.one * scaleFactor;
                 speed = 10f;
                 meshRenderer.material.color = Color.yellow;
+                
                 break;
             case TargetSizes.Large:
                 scaleFactor = 2.0f;
                 transform.localScale = Vector3.one * scaleFactor;
                 speed = 5f;
                 meshRenderer.material.color = Color.green;
+                
                 break;
             default:
                 scaleFactor = 2.0f;
