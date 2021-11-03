@@ -20,6 +20,7 @@ public class Target : MonoBehaviour
     public float moveDistance = 500f;
     public Vector3 newPosition;
     public float speed;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class Target : MonoBehaviour
     }
     public void OnHit()
     {
+        animator.SetTrigger("Hit");
         meshRenderer.material.color = Color.red;
         healthPoints = healthPoints - 20;
         Debug.Log(healthPoints);
@@ -54,8 +56,11 @@ public class Target : MonoBehaviour
 
     public void Destroy()
     {
+        animator.SetTrigger("Die");
+        
         TargetManager.instance.Remove(this);
-        Destroy(gameObject);
+        Destroy(gameObject, 3f);
+        
     }
 
     public void Setup()
@@ -121,4 +126,9 @@ public class Target : MonoBehaviour
 
         
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
+
 }

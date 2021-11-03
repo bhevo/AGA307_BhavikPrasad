@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: -7839359919816516688}
   m_Layer: 0
   m_Name: Skeleton_archer_A
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -509,7 +509,7 @@ Animator:
   m_GameObject: {fileID: 133616}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 20300ac630e0fcd4dbab63a9b39cdafa, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9218c5be07b612d40965090fdf863414, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -532,6 +532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   myType: 0
+  anim: {fileID: 9595696}
 --- !u!1 &134496
 GameObject:
   m_ObjectHideFlags: 0

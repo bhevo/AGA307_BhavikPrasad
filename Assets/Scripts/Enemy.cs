@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     float moveDistance = 500f;
     public float health;
     public EnemyType myType;
+    public Animator anim;
     // Start is called before the first frame update
 
 
@@ -81,6 +82,7 @@ public class Enemy : MonoBehaviour
     {
         health -= 25f;
         GameManager.instance.AddScore(10);
+        anim.SetTrigger("Hit");
     }
 
     public void Die()
@@ -88,5 +90,6 @@ public class Enemy : MonoBehaviour
         GameManager.instance.AddScore(100);
         EnemyManager.instance.Remove(this);
         Destroy(gameObject);
+        anim.SetTrigger("Die");
     }
 }
